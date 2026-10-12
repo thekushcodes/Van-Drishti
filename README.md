@@ -393,26 +393,21 @@ VanDrishti/
 Use the branch containing the integrated files as the source of truth.
 Do not assume every directory is present on every branch.
 
-## Team and academic information
 
-Fill in this section according to your college's submission
-requirements. Do not include personal phone numbers, email addresses, or
-other information that is not required.
+## Team and Academic Information
 
-  Team member    Roll number       Responsibility
-  -------------- ----------------- ----------------
-  `Anshika Sharma`   `<Roll number>`   `<Role>`
-  `Anurag Kushwaha`   `<Roll number>`   `<Role>`
-  `Anshika Khanna`   `<Roll number>`   `<Role>`
-  `Apoorva`   `<Roll number>`   `<Role>`
+| Team Member     | Roll Number     |
+|-----------------|-----------------|
+| Anshika Sharma  | `<Roll number>` |
+| Anurag Kushwaha | 2501921520091   |
+| Anshika Khanna  | `<Roll number>` |
+| Apoorva         | `<Roll number>` |
 
-**Project guide / faculty mentor:** `<Name, if required>`
+**Department:** Computer Science and Artificial Intelligence (CS AI)
 
-**Department:** `<Department name>`
+**Institution:** GL Bajaj Institute of Technology and Management
 
-**Institution:** `<College / university name>`
-
-**Academic year:** `<Academic year>`
+**Academic Year:** 2026–27
 
 ## Responsible use
 
