@@ -398,10 +398,10 @@ Do not assume every directory is present on every branch.
 
 | Team Member     | Roll Number     |
 |-----------------|-----------------|
-| Anshika Sharma  | `<Roll number>` |
+| Anshika Sharma  | 2501921520086   |
 | Anurag Kushwaha | 2501921520091   |
-| Anshika Khanna  | `<Roll number>` |
-| Apoorva         | `<Roll number>` |
+| Anshika Khanna  | 2501921520084   |
+| Apoorva         | 2501921520098 |
 
 **Department:** Computer Science and Artificial Intelligence (CS AI)
 
