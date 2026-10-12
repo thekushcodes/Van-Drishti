@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vandrishti.dev/contracts/xai.schema.json",
+  "title": "M4 Explanation Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["explanations"],
+  "properties": {
+    "explanations": {"type": "array", "items": {"$ref": "#/$defs/explanation"}}
+  },
+  "$defs": {
+    "explanation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "summary", "evidence"],
+      "properties": {
+        "event_id": {"type": "string"},
+        "summary": {"type": "string"},
+        "species_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "reid_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "kind", "uri"],
+      "properties": {
+        "evidence_id": {"type": "string"},
+        "kind": {"enum": ["detection_box", "species_heatmap", "reid_similarity", "frame", "other"]},
+        "uri": {"type": "string"},
+        "description": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

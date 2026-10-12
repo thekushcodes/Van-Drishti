@@ -1,0 +1,10 @@
+path: wildlife_dataset_v2
+
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: elephant
+  1: deer
+  2: tiger

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vandrishti.dev/contracts/review.schema.json",
+  "title": "M4 Human Review Item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["review_id", "run_id", "reason", "status", "created_at"],
+  "properties": {
+    "review_id": {"type": "string", "format": "uuid"},
+    "run_id": {"type": "string", "format": "uuid"},
+    "event_id": {"type": ["string", "null"]},
+    "reason": {"type": "string"},
+    "status": {"enum": ["open", "resolved"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "resolution_note": {"type": ["string", "null"]}
+  }
+}

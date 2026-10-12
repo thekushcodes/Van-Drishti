@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vandrishti.dev/contracts/report.schema.json",
+  "title": "M4 Intelligence Report",
+  "description": "A report generated only from a Fact Packet. numeric_claims are checked by Numeric Guard.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "narrative", "numeric_claims", "generated_by"],
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "narrative": {"type": "string", "minLength": 1},
+    "numeric_claims": {"type": "array", "items": {"$ref": "#/$defs/numericClaim"}},
+    "generated_by": {"enum": ["template", "ollama", "fallback_template"]}
+  },
+  "$defs": {
+    "numericClaim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value", "unit"],
+      "properties": {
+        "label": {"type": "string"},
+        "value": {"type": "number"},
+        "unit": {"type": "string"}
+      }
+    }
+  }
+}

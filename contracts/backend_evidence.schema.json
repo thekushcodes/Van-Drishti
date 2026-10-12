@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vandrishti.dev/contracts/backend_evidence.schema.json",
+  "title": "M1 Backend Evidence Bundle",
+  "description": "The only input M4 accepts from M1. M4 must not access an M1 database directly.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_id", "generated_at", "window_start", "window_end", "observations", "counts"],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "window_start": {"type": "string", "format": "date-time"},
+    "window_end": {"type": "string", "format": "date-time"},
+    "camera_id": {"type": ["string", "null"]},
+    "location": {"type": ["string", "null"]},
+    "observations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/observation"}
+    },
+    "counts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/count"}
+    },
+    "alerts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/alert"}
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "kind", "uri"],
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["detection_box", "species_heatmap", "reid_similarity", "frame", "other"]},
+        "uri": {"type": "string", "minLength": 1},
+        "description": {"type": ["string", "null"]}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "timestamp", "species", "detection_confidence", "evidence"],
+      "properties": {
+        "event_id": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "species": {"type": "string", "minLength": 1},
+        "detection_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "track_id": {"type": ["string", "null"]},
+        "reid_identity": {"type": ["string", "null"]},
+        "reid_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+      }
+    },
+    "count": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["species", "unique_individuals"],
+      "properties": {
+        "species": {"type": "string", "minLength": 1},
+        "unique_individuals": {"type": "integer", "minimum": 0}
+      }
+    },
+    "alert": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alert_id", "severity", "message"],
+      "properties": {
+        "alert_id": {"type": "string", "minLength": 1},
+        "severity": {"enum": ["low", "medium", "high"]},
+        "message": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

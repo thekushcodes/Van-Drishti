@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vandrishti.dev/contracts/fact_packet.schema.json",
+  "title": "M4 Fact Packet",
+  "description": "Immutable, traceable facts created by M4 from an M1 Backend Evidence Bundle.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packet_id", "source_id", "created_at", "window_start", "window_end", "facts", "numeric_facts", "evidence"],
+  "properties": {
+    "packet_id": {"type": "string", "format": "uuid"},
+    "source_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "window_start": {"type": "string", "format": "date-time"},
+    "window_end": {"type": "string", "format": "date-time"},
+    "location": {"type": ["string", "null"]},
+    "facts": {"type": "array", "items": {"$ref": "#/$defs/fact"}},
+    "numeric_facts": {"type": "array", "items": {"$ref": "#/$defs/numericFact"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_id", "category", "statement", "source_event_ids"],
+      "properties": {
+        "fact_id": {"type": "string", "format": "uuid"},
+        "category": {"enum": ["sighting", "identity", "count", "alert"]},
+        "statement": {"type": "string"},
+        "source_event_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "numericFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_id", "label", "value", "unit"],
+      "properties": {
+        "fact_id": {"type": "string", "format": "uuid"},
+        "label": {"type": "string"},
+        "value": {"type": "number"},
+        "unit": {"type": "string"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "kind", "uri"],
+      "properties": {
+        "evidence_id": {"type": "string"},
+        "kind": {"enum": ["detection_box", "species_heatmap", "reid_similarity", "frame", "other"]},
+        "uri": {"type": "string"},
+        "description": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

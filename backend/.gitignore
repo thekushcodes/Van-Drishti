@@ -1,0 +1,23 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local and generated data
+evidence/
+uploads/
+outputs/
+
+# Local videos
+*.mp4
+*.avi
+*.mov
+
+# macOS
+.DS_Store
