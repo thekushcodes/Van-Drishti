@@ -1,4 +1,25 @@
+# OS
 .DS_Store
+
+# Python
 **/__pycache__/
-**/.env
-**/.venv/
+**/*.pyc
+venv/
+.venv/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+.env.save
+
+# IDE
+.vscode/
+
+# Training datasets
+deerImages/
+elephantImages/
+tigerImages/
+deer.mp4
+elephant.mp4
+tiger.mp4
